@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/restaurante_app.dir/main.cpp.o CMakeFiles/restaurante_app.dir/restaurante.cpp.o CMakeFiles/restaurante_app.dir/chef.cpp.o -o restaurante_app 
