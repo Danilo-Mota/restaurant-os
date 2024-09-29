@@ -13,7 +13,7 @@ public:
     Restaurante(unsigned int qtdChefs, unsigned int qtdMesas);
     void fazerPedido(unsigned int mesa, const std::string &item);
     void finalizarMesa(unsigned int mesa);
-    void processarListaDeEspera(); // Processa pedidos em espera
+    void processarListaDeEspera();
 
 private:
     static const unsigned int MAX_CHEFS = 100;
