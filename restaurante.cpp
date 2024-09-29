@@ -8,7 +8,7 @@ Restaurante::Restaurante(unsigned int qtdChefs, unsigned int qtdMesas) : chefs()
     }
 
     for (int i = 0; i < qtdChefs; i++) {
-        chefs.emplace_back();
+        chefs.emplace_back(this); // Passa a referência do restaurante para os chefs
     }
 }
 
@@ -32,14 +32,14 @@ void Restaurante::fazerPedido(unsigned int mesa, const std::string &item) {
     Chef *chef = getChefLivre();
     if (chef) {
         std::cout << "Chefe disponível para a mesa " << mesa << std::endl;
-        mesasOcupadas[mesa] = chef;
+        mesasOcupadas[mesa] = chef; // Associa o chef à mesa
         pid_t pid = fork();
 
         if (pid == 0) {
             chef->iniciarAtendimento(mesa);
             chef->preparar(item);
             chef->finalizarAtendimento();
-            exit(0);
+            exit(0); // Termina o processo filho
         } else if (pid < 0) {
             std::cerr << "Erro ao criar processo para atender a mesa " << mesa << std::endl;
         }
@@ -60,7 +60,7 @@ void Restaurante::finalizarMesa(unsigned int mesa) {
 
     Chef *chef = mesasOcupadas[mesa];
     chef->finalizarAtendimento();
-    mesasOcupadas.erase(mesa);
+    mesasOcupadas.erase(mesa); // Remove a mesa da lista de mesas ocupadas
     processarListaDeEspera();
 }
 

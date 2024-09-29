@@ -14,7 +14,6 @@
 class Chef {
 public:
     Chef();
-    virtual ~Chef();
     void iniciarAtendimento(const unsigned int mesa);
     void preparar(const std::string &pedido);
     void finalizarAtendimento();
@@ -22,7 +21,7 @@ public:
     unsigned int getId() const { return id; }
 
 private:
-    static unsigned int contador;
+    static unsigned int contador; // Contador para atribuir IDs únicos aos chefs
     unsigned int id;
     std::vector<std::string> pedidos;
 

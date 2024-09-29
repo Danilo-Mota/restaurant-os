@@ -12,9 +12,6 @@ Chef::Chef() : id(++contador) {
     log.close();
 }
 
-Chef::~Chef() {
-}
-
 void Chef::iniciarAtendimento(const unsigned int mesa) {
     std::cout << "Chefe " << id << " começando atendimento à mesa " << mesa << std::endl;
 }
@@ -30,8 +27,8 @@ void Chef::finalizarAtendimento() {
 }
 
 void Chef::registrarPedido(const std::string &pedido) {
-    pedidos.push_back(pedido);
-    std::ofstream log("ChefeCozinha_" + std::to_string(id) + ".txt", std::ios::app);
+    pedidos.push_back(pedido); // Armazena o pedido na lista de pedidos do chef
+    std::ofstream log("ChefeCozinha_" + std::to_string(id) + ".txt", std::ios::app); // O app é de append, pra adicionar ao invés de sobrescrever
     log << "Mesa " << id << ":\n";
     for (const auto &p : pedidos) {
         log << "- " << p << std::endl;

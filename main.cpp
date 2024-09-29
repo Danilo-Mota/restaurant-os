@@ -13,7 +13,7 @@ bool encerrar(std::string &comando) {
 int processarEntrada(std::istream &entrada) {
     unsigned int qtdChefs, qtdMesas;
     entrada >> qtdChefs >> qtdMesas;
-    std::cin.ignore();
+    std::cin.ignore(); // Pra ignorar o próximo input caso tenha escrito algo depois de ler e ter quebrado a linha
 
     try {
         Restaurante restaurante(qtdChefs, qtdMesas);
